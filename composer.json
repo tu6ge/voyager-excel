@@ -1,0 +1,31 @@
+{
+    "name": "voyager-excel",
+    "description": "voyager excel export hook",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tu6ge",
+            "email": "772364230@qq.com"
+        }
+    ],
+    "require": {
+        "larapack/hooks": "^1.0.5",
+        "maatwebsite/excel":"^3.1"
+    },
+    "require-dev": {
+        "laravel/support":"^5.5 || ^6"
+    },
+    "autoload": {
+        "psr-4": {
+            "VoyagerExcel\\": "src/"
+        }
+    },
+    "extra": {
+        "hook": {
+            "providers": [
+                "VoyagerExcel\\VoyagerExcelServiceProvider"
+            ]
+        }
+    }
+}
