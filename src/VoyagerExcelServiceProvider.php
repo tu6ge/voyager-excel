@@ -5,6 +5,7 @@ namespace VoyagerExcel;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
+use TCG\Voyager\Facades\Voyager;
 use VoyagerExcel\Http\Middleware\VoyagerExcelMiddleware;
 
 class VoyagerExcelServiceProvider extends ServiceProvider
@@ -16,12 +17,8 @@ class VoyagerExcelServiceProvider extends ServiceProvider
 
     public function boot(Router $router, Dispatcher $event)
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/excel.php');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager_excel');
-
-        
-        $router->aliasMiddleware('voyager.excel', VoyagerExcelMiddleware::class);
-
         $this->loadTranslationsFrom(realpath(__DIR__.'/../resources/lang'), 'voyager_excel');
+
+        Voyager::addAction(\VoyagerExcel\Actions\Export::class);
     }
 }
