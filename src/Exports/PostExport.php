@@ -3,6 +3,7 @@
 namespace VoyagerExcel\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
+use TCG\Voyager\Facades\Voyager;
 
 class PostExport implements FromCollection
 {

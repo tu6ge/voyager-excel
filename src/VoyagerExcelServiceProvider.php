@@ -17,9 +17,11 @@ class VoyagerExcelServiceProvider extends ServiceProvider
     public function boot(Router $router, Dispatcher $event)
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/excel.php');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager-excel');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager_excel');
 
         
         $router->aliasMiddleware('voyager.excel', VoyagerExcelMiddleware::class);
+
+        $this->loadTranslationsFrom(realpath(__DIR__.'/../resources/lang'), 'voyager_excel');
     }
 }

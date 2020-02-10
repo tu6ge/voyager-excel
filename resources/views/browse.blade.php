@@ -7,7 +7,7 @@
                 <div class="panel ">
                     <div class="panel-body">
                         <div class="form-group pull-right">
-                            <button class=" btn btn-primary" >导出 Excel</button>
+                            <a href="{{ route('voyager_excel.export.post') }}" class=" btn btn-primary" >{{__('voyager_excel::excel.export_excel')}}</a>
                         </div>
                     </div>
                 </div>

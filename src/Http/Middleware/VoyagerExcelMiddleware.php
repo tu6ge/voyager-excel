@@ -21,7 +21,7 @@ class VoyagerExcelMiddleware
     {
         if($request->route()->action['as'] == 'voyager.posts.index'){
             $response = $next($request);
-            return response()->view('voyager-excel::browse',$response->original->getData());
+            return response()->view('voyager_excel::browse',$response->original->getData());
         }
         return $next($request);
     }
