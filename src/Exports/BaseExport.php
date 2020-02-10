@@ -5,7 +5,7 @@ namespace VoyagerExcel\Exports;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use TCG\Voyager\Facades\Voyager;
 
-class PostExport implements FromCollection
+class BaseExport implements FromCollection
 {
     protected $dataType;
     protected $model;
@@ -26,7 +26,7 @@ class PostExport implements FromCollection
             return $res['display_name'];
         });
 
-        $rs =  $this->model->whereIn('id', $this->ids)->get();
+        $rs =  $this->model->whereIn($this->model->getKeyName(), $this->ids)->get();
         $rs = $rs->map(function($res)use($fields){
             $arr = [];
             foreach($fields as $val){

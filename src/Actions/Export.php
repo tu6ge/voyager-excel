@@ -4,7 +4,7 @@ namespace VoyagerExcel\Actions;
 
 use TCG\Voyager\Actions\AbstractAction;
 use Maatwebsite\Excel\Facades\Excel;
-use VoyagerExcel\Exports\PostExport;
+use VoyagerExcel\Exports\BaseExport;
 use Illuminate\Database\Eloquent\Model;
 
 class Export extends AbstractAction
@@ -24,13 +24,16 @@ class Export extends AbstractAction
         if(empty($this->dataType->model_name)){
             return false;
         }
+
         if(!class_exists($this->dataType->model_name)){
             return false;
         }
+
         $model = new $this->dataType->model_name;
         if(!($model instanceof  Model)){
             return false;
         }
+        
         return true;
     }
 
@@ -46,12 +49,19 @@ class Export extends AbstractAction
         return null;
     }
 
-
     public function massAction($ids, $comingFrom)
     {
         if(empty(array_filter($ids))){
             return redirect($comingFrom);
         }
-        return Excel::download(new PostExport($this->dataType, $ids), 'demo-'.date('H:i:s').'.xls');
+        return Excel::download(
+            new BaseExport($this->dataType, $ids),  
+            $this->getFileName()
+        );
+    }
+
+    protected function getFileName()
+    {
+        return sprintf('%s_%s.xls',  $this->dataType->display_name_plural, date('Y-m-d_H_i_s'));
     }
 }
