@@ -21,7 +21,7 @@
         }
     },
     "extra": {
-        "hook": {
+        "laravel": {
             "providers": [
                 "Tu6ge\\VoyagerExcel\\VoyagerExcelServiceProvider"
             ]
