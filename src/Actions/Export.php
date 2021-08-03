@@ -16,7 +16,7 @@ class Export extends AbstractAction
 
     public function getIcon()
     {
-        return 'voyager-list';
+        return 'voyager-download';
     }
 
     public function shouldActionDisplayOnDataType()
@@ -40,7 +40,7 @@ class Export extends AbstractAction
     public function getAttributes()
     {
         return [
-            'class' => 'btn btn-sm btn-primary pull-right',
+            'class' => 'btn btn-sm btn-primary',
         ];
     }
 
