@@ -19,6 +19,6 @@ class VoyagerExcelServiceProvider extends ServiceProvider
     {
         $this->loadTranslationsFrom(realpath(__DIR__.'/../resources/lang'), 'voyager_excel');
 
-        Voyager::addAction(\VoyagerExcel\Actions\Export::class);
+        Voyager::addAction(\Tu6ge\VoyagerExcel\Actions\Export::class);
     }
 }
