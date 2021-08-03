@@ -1,6 +1,6 @@
 <?php 
 
-namespace VoyagerExcel\Exports;
+namespace Tu6ge\VoyagerExcel\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 use TCG\Voyager\Facades\Voyager;

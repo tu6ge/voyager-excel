@@ -1,6 +1,6 @@
 <?php 
 
-namespace VoyagerExcel;
+namespace Tu6ge\VoyagerExcel;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;

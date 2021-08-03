@@ -1,10 +1,10 @@
 <?php
 
-namespace VoyagerExcel\Actions;
+namespace Tu6ge\VoyagerExcel\Actions;
 
 use TCG\Voyager\Actions\AbstractAction;
 use Maatwebsite\Excel\Facades\Excel;
-use VoyagerExcel\Exports\BaseExport;
+use Tu6ge\VoyagerExcel\Exports\BaseExport;
 use Illuminate\Database\Eloquent\Model;
 
 class Export extends AbstractAction

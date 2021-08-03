@@ -17,13 +17,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VoyagerExcel\\": "src/"
+            "Tu6ge\\VoyagerExcel\\": "src/"
         }
     },
     "extra": {
         "hook": {
             "providers": [
-                "VoyagerExcel\\VoyagerExcelServiceProvider"
+                "Tu6ge\\VoyagerExcel\\VoyagerExcelServiceProvider"
             ]
         }
     }

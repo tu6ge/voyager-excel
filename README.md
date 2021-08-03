@@ -2,16 +2,16 @@
 
 a plugin for excel export 
 
-## Install hook
+## Install
 
 ```bash
-php artisan hook:install tu6ge/voyager-excel
+composer require tu6ge/voyager-excel
 ```
 
-## Enable hook
+## Enable
 
 ```bash
-php artisan hook:enable tu6ge/voyager-excel
+php artisan vendor:publish --provider="Tu6ge\VoyagerExcel\VoyagerExcelServiceProvider"
 ```
 
 ## Support Language
