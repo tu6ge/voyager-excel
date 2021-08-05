@@ -8,10 +8,28 @@ a plugin for excel export
 composer require tu6ge/voyager-excel
 ```
 
-## Enable
+## Configuration
 
-```bash
-php artisan vendor:publish --provider="Tu6ge\VoyagerExcel\VoyagerExcelServiceProvider"
+1. disable special Model
+
+```
+class Example extends Model
+{
+    public $disable_export = true;
+
+    // ...
+}
+```
+
+2. allow export all records of special Model, default export selected records
+
+```
+class Example extends Model
+{
+    public $allow_export_all = true;
+
+    // ...
+}
 ```
 
 ## Support Language

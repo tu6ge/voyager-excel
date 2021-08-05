@@ -30,7 +30,11 @@ class Export extends AbstractAction
         }
 
         $model = new $this->dataType->model_name;
-        if(!($model instanceof  Model)){
+        if (!($model instanceof  Model)) {
+            return false;
+        }
+
+        if ($model->disable_export) {
             return false;
         }
         
@@ -51,7 +55,9 @@ class Export extends AbstractAction
 
     public function massAction($ids, $comingFrom)
     {
-        if(empty(array_filter($ids))){
+        $model = new $this->dataType->model_name;
+
+        if($model->allow_export_all == false && empty(array_filter($ids))){
             return redirect($comingFrom);
         }
         return Excel::download(
