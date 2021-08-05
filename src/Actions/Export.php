@@ -2,10 +2,10 @@
 
 namespace Tu6ge\VoyagerExcel\Actions;
 
-use TCG\Voyager\Actions\AbstractAction;
-use Maatwebsite\Excel\Facades\Excel;
-use Tu6ge\VoyagerExcel\Exports\BaseExport;
 use Illuminate\Database\Eloquent\Model;
+use Maatwebsite\Excel\Facades\Excel;
+use TCG\Voyager\Actions\AbstractAction;
+use Tu6ge\VoyagerExcel\Exports\BaseExport;
 
 class Export extends AbstractAction
 {
@@ -21,15 +21,15 @@ class Export extends AbstractAction
 
     public function shouldActionDisplayOnDataType()
     {
-        if(empty($this->dataType->model_name)){
+        if (empty($this->dataType->model_name)) {
             return false;
         }
 
-        if(!class_exists($this->dataType->model_name)){
+        if (!class_exists($this->dataType->model_name)) {
             return false;
         }
 
-        $model = new $this->dataType->model_name;
+        $model = new $this->dataType->model_name();
         if (!($model instanceof  Model)) {
             return false;
         }
@@ -37,7 +37,7 @@ class Export extends AbstractAction
         if ($model->disable_export) {
             return false;
         }
-        
+
         return true;
     }
 
@@ -55,19 +55,20 @@ class Export extends AbstractAction
 
     public function massAction($ids, $comingFrom)
     {
-        $model = new $this->dataType->model_name;
+        $model = new $this->dataType->model_name();
 
-        if($model->allow_export_all == false && empty(array_filter($ids))){
+        if ($model->allow_export_all == false && empty(array_filter($ids))) {
             return redirect($comingFrom);
         }
+
         return Excel::download(
-            new BaseExport($this->dataType, $ids),  
+            new BaseExport($this->dataType, $ids),
             $this->getFileName()
         );
     }
 
     protected function getFileName()
     {
-        return sprintf('%s_%s.xls',  $this->dataType->display_name_plural, date('Y-m-d_H_i_s'));
+        return sprintf('%s_%s.xls', $this->dataType->display_name_plural, date('Y-m-d_H_i_s'));
     }
 }

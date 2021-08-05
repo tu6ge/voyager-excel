@@ -1,18 +1,16 @@
-<?php 
+<?php
 
 namespace Tu6ge\VoyagerExcel;
 
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
+use Illuminate\Support\ServiceProvider;
 use TCG\Voyager\Facades\Voyager;
-use VoyagerExcel\Http\Middleware\VoyagerExcelMiddleware;
 
 class VoyagerExcelServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        
     }
 
     public function boot(Router $router, Dispatcher $event)

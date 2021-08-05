@@ -1,5 +1,5 @@
-<?php 
+<?php
 
 return [
-    'export_excel' => 'Export Excel'
+    'export_excel' => 'Export Excel',
 ];
