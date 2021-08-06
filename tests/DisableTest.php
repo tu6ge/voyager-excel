@@ -2,10 +2,8 @@
 
 namespace Tu6ge\VoyagerExcel\Tests;
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
-use Maatwebsite\Excel\Facades\Excel;
 use TCG\Voyager\Models\DataType;
 use TCG\Voyager\Models\Permission;
 use Tu6ge\VoyagerExcel\Tests\Models\CategoryDisable;

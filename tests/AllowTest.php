@@ -50,7 +50,7 @@ class AllowTest extends TestCase
 
         $this->post(route('voyager.categoryallows.action'), [
             'action' => 'Tu6ge\VoyagerExcel\Actions\Export',
-            'ids' => '1'
+            'ids'    => '1'
         ]);
 
         // $this->getResponse()->dumpHeaders();
@@ -81,7 +81,7 @@ class AllowTest extends TestCase
 
         $this->post(route('voyager.categoryallows.action'), [
             'action' => 'Tu6ge\VoyagerExcel\Actions\Export',
-            'ids' => ''
+            'ids'    => ''
         ]);
 
         Excel::assertDownloaded('Categoryallows_2021-08-05_12_34.xls', function ($content) {

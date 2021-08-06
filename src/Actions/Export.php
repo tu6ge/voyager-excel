@@ -75,7 +75,7 @@ class Export extends AbstractAction
 
     protected function redirect()
     {
-        return <<<eot
+        return <<<'eot'
             <html>
                 <body>
                     <script type="text/javascript">

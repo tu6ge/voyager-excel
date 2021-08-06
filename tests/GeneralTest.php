@@ -9,8 +9,6 @@ use Maatwebsite\Excel\Facades\Excel;
 use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\DataType;
 use TCG\Voyager\Models\Permission;
-use Tu6ge\VoyagerExcel\Tests\Models\CategoryAllow;
-use Tu6ge\VoyagerExcel\Tests\Models\CategoryDisable;
 
 class GeneralTest extends TestCase
 {
@@ -59,7 +57,7 @@ class GeneralTest extends TestCase
 
         $this->post(route('voyager.categories.action'), [
             'action' => 'Tu6ge\VoyagerExcel\Actions\Export',
-            'ids' => '1'
+            'ids'    => '1'
         ]);
 
         // $this->getResponse()->dumpHeaders();
@@ -86,7 +84,7 @@ class GeneralTest extends TestCase
 
         $this->post(route('voyager.categories.action'), [
             'action' => 'Tu6ge\VoyagerExcel\Actions\Export',
-            'ids' => ''
+            'ids'    => ''
         ])->see('window.history.go(-1)');
     }
 
@@ -119,44 +117,6 @@ class GeneralTest extends TestCase
         ]);
 
         Category::insert([
-            'text_area' => 'foo',
-        ]);
-    }
-
-    private function initAllow()
-    {
-        $type = 'text';
-        $name = 'text_area';
-        $options = json_encode([
-            'default' => 'Default Text',
-        ]);
-
-        Schema::create('categories', function ($table) use ($type, $name) {
-            $table->bigIncrements('id');
-            $table->{$type}($name)->nullable();
-            $table->timestamps();
-        });
-
-        // Delete old BREAD
-        $this->delete(route('voyager.bread.delete', ['id' => DataType::where('name', 'categories')->first()->id]));
-
-        // Create BREAD
-        // dd($this->visitRoute('voyager.bread.create', ['table' => 'categories']));
-        $this->visitRoute('voyager.bread.create', ['table' => 'categories'])
-        ->select($name, 'field_input_type_'.$name)
-        ->type($options, 'field_details_'.$name)
-        ->type('Tu6ge\\VoyagerExcel\\Tests\\Models\\CategoryAllow', 'model_name')
-        ->press(__('voyager::generic.submit'))
-        ->seeRouteIs('voyager.bread.index');
-
-        // Attach permissions to role
-        Auth::user()->role->permissions()->syncWithoutDetaching(Permission::all()->pluck('id'));
-
-        CategoryAllow::insert([
-            'text_area' => 'bar',
-        ]);
-
-        CategoryAllow::insert([
             'text_area' => 'foo',
         ]);
     }

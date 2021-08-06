@@ -5,9 +5,9 @@ namespace Tu6ge\VoyagerExcel\Tests;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Maatwebsite\Excel\ExcelServiceProvider;
 use Orchestra\Testbench\BrowserKit\TestCase as OrchestraTestCase;
-use Tu6ge\VoyagerExcel\VoyagerExcelServiceProvider;
 use TCG\Voyager\Models\User;
 use TCG\Voyager\VoyagerServiceProvider;
+use Tu6ge\VoyagerExcel\VoyagerExcelServiceProvider;
 
 class TestCase extends OrchestraTestCase
 {
@@ -78,12 +78,12 @@ class TestCase extends OrchestraTestCase
 
     protected function install()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         $this->artisan('voyager:install', ['--with-dummy' => $this->withDummy]);
 
-        $this->seedVoyager("CategoriesAllowTableSeeder");
-        $this->seedVoyager("CategoriesDisableTableSeeder");
+        $this->seedVoyager('CategoriesAllowTableSeeder');
+        $this->seedVoyager('CategoriesDisableTableSeeder');
 
         app(VoyagerServiceProvider::class, ['app' => $this->app])->loadAuth();
 
