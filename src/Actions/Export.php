@@ -2,6 +2,7 @@
 
 namespace Tu6ge\VoyagerExcel\Actions;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Facades\Excel;
 use TCG\Voyager\Actions\AbstractAction;
@@ -58,7 +59,7 @@ class Export extends AbstractAction
         $model = new $this->dataType->model_name();
 
         if ($model->allow_export_all == false && empty(array_filter($ids))) {
-            return redirect($comingFrom);
+            return $this->redirect();
         }
 
         return Excel::download(
@@ -69,6 +70,19 @@ class Export extends AbstractAction
 
     protected function getFileName()
     {
-        return sprintf('%s_%s.xls', $this->dataType->display_name_plural, date('Y-m-d_H_i_s'));
+        return sprintf('%s_%s.xls', $this->dataType->display_name_plural, Carbon::now()->format('Y-m-d_H_i'));
+    }
+
+    protected function redirect()
+    {
+        return <<<eot
+            <html>
+                <body>
+                    <script type="text/javascript">
+                        window.history.go(-1)
+                    </script>
+                </body>
+            </html>
+        eot;
     }
 }
