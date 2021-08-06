@@ -57,7 +57,7 @@ class GeneralTest extends TestCase
 
         $this->post(route('voyager.categories.action'), [
             'action' => 'Tu6ge\VoyagerExcel\Actions\Export',
-            'ids'    => '1'
+            'ids'    => '1',
         ]);
 
         // $this->getResponse()->dumpHeaders();
@@ -84,7 +84,7 @@ class GeneralTest extends TestCase
 
         $this->post(route('voyager.categories.action'), [
             'action' => 'Tu6ge\VoyagerExcel\Actions\Export',
-            'ids'    => ''
+            'ids'    => '',
         ])->see('window.history.go(-1)');
     }
 
@@ -101,7 +101,6 @@ class GeneralTest extends TestCase
         $this->delete(route('voyager.bread.delete', ['id' => DataType::where('name', 'categories')->first()->id]));
 
         // Create BREAD
-        // dd($this->visitRoute('voyager.bread.create', ['table' => 'categories']));
         $this->visitRoute('voyager.bread.create', ['table' => 'categories'])
         ->select($name, 'field_input_type_'.$name)
         ->type($options, 'field_details_'.$name)

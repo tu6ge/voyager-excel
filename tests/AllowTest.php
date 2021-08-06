@@ -50,7 +50,7 @@ class AllowTest extends TestCase
 
         $this->post(route('voyager.categoryallows.action'), [
             'action' => 'Tu6ge\VoyagerExcel\Actions\Export',
-            'ids'    => '1'
+            'ids'    => '1',
         ]);
 
         // $this->getResponse()->dumpHeaders();
@@ -81,7 +81,7 @@ class AllowTest extends TestCase
 
         $this->post(route('voyager.categoryallows.action'), [
             'action' => 'Tu6ge\VoyagerExcel\Actions\Export',
-            'ids'    => ''
+            'ids'    => '',
         ]);
 
         Excel::assertDownloaded('Categoryallows_2021-08-05_12_34.xls', function ($content) {
@@ -117,7 +117,6 @@ class AllowTest extends TestCase
             $this->delete(route('voyager.bread.delete', ['id' => $categoryallows->id]));
         }
         // Create BREAD
-        // dd($this->visitRoute('voyager.bread.create', ['table' => 'categories']));
         $this->visitRoute('voyager.bread.create', ['table' => 'categoryallows'])
         ->select($name, 'field_input_type_'.$name)
         ->type($options, 'field_details_'.$name)
@@ -125,8 +124,6 @@ class AllowTest extends TestCase
         //->type('Tu6ge\\VoyagerExcel\\Tests\\DemoPolicy', 'policy_name')
         ->press(__('voyager::generic.submit'))
         ->seeRouteIs('voyager.bread.index');
-
-        //dd(DataType::where('name', 'categoryallows')->first());
 
         // Attach permissions to role
         Auth::user()->role->permissions()->syncWithoutDetaching(Permission::all()->pluck('id'));

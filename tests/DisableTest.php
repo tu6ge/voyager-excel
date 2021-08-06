@@ -53,7 +53,6 @@ class DisableTest extends TestCase
             $this->delete(route('voyager.bread.delete', ['id' => $categorydisables->id]));
         }
         // Create BREAD
-        // dd($this->visitRoute('voyager.bread.create', ['table' => 'categories']));
         $this->visitRoute('voyager.bread.create', ['table' => 'categorydisables'])
         ->select($name, 'field_input_type_'.$name)
         ->type($options, 'field_details_'.$name)
@@ -61,8 +60,6 @@ class DisableTest extends TestCase
         //->type('Tu6ge\\VoyagerExcel\\Tests\\DemoPolicy', 'policy_name')
         ->press(__('voyager::generic.submit'))
         ->seeRouteIs('voyager.bread.index');
-
-        //dd(DataType::where('name', 'categoryallows')->first());
 
         // Attach permissions to role
         Auth::user()->role->permissions()->syncWithoutDetaching(Permission::all()->pluck('id'));

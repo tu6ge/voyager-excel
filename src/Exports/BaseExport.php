@@ -8,7 +8,7 @@ class BaseExport implements FromCollection
 {
     protected $dataType;
     protected $model;
-    protected array $ids;
+    protected $ids;
 
     public function __construct($dataType, array $ids)
     {
