@@ -59,7 +59,7 @@ jobs:
           PHP_VERSION: ${{ matrix.php }}
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_PARALLEL: true
-          COVERALLS_FLAG_NAME: php-${{ matrix.php }}
+          COVERALLS_FLAG_NAME: php-${{ matrix.php }}-laravel-${{ matrix.laravel }}
         run: php-coveralls -v
 
   coveralls-finish:
