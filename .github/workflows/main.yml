@@ -32,9 +32,9 @@ jobs:
         uses: shivammathur/setup-php@master
         with:
           php-version: '${{ matrix.php }}'
-          extensions: mbstring, pdo_sqlite, fileinfo, gd
-          coverage: pcov
-          
+          extensions: mbstring, pdo_sqlite, fileinfo, gd, xdebug
+          coverage: xdebug
+
       # Install PHP dependencies
       - name: Install Composer dependencies
         run: composer require "illuminate/support:${{ matrix.laravel }}"
@@ -47,16 +47,20 @@ jobs:
 
       # Run phpunit tests
       - name: Run tests in Laravel
-        run: ./vendor/bin/phpunit 
+        run: ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
        
+      - name: Install PHP Coveralls library
+        env:
+          PHP_VERSION: ${{ matrix.php }}
+        run: composer global require --dev php-coveralls/php-coveralls
 
-      - name: Coveralls Parallel
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.github_token }}
-          flag-name: run-php${{ matrix.php }}-laravel${{ matrix.laravel }}
-          parallel: true
-
+      - name: Upload coverage results to Coveralls
+        env:
+          PHP_VERSION: ${{ matrix.php }}
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_PARALLEL: true
+          COVERALLS_FLAG_NAME: php-${{ matrix.php }}
+        run: php-coveralls -v
 
   coveralls-finish:
     needs: [test]
