@@ -4,8 +4,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/tu6ge/voyager-excel/badge.svg?branch=master)](https://coveralls.io/github/tu6ge/voyager-excel?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/tu6ge/voyager-excel/v)](//packagist.org/packages/tu6ge/voyager-excel)
 [![styleci](https://github.styleci.io/repos/239457151/shield?branch=master)](https://github.com/tu6ge/voyager-excel)
-[![](http://github-actions.40ants.com/tu6ge/voyager-excel/matrix.svg)](https://github.com/tu6ge/voyager-excel)
 [![](https://img.shields.io/github/issues-closed/tu6ge/voyager-excel)](https://github.com/tu6ge/voyager-excel)
+[![](http://github-actions.40ants.com/tu6ge/voyager-excel/matrix.svg)](https://github.com/tu6ge/voyager-excel)
+
 
 
 
