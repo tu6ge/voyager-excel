@@ -8,9 +8,11 @@
 [![](http://github-actions.40ants.com/tu6ge/voyager-excel/matrix.svg)](https://github.com/tu6ge/voyager-excel)
 
 
+a plugin of [voyager](https://github.com/the-control-group/voyager) for excel export
 
+## Required
 
-a plugin for excel export 
+- *voyager* this is a missing laravel admin 
 
 ## Install
 
@@ -21,6 +23,8 @@ composer require tu6ge/voyager-excel
 ## Configuration
 
 1. disable special Model
+
+You can disable export button in special Model :
 
 ```
 class Example extends Model
@@ -44,7 +48,7 @@ class Example extends Model
 
 ## Support Language
 
-- zh_CN （中文）
+- zh_CN
 - en 
 
 ## License
@@ -54,5 +58,9 @@ MIT
 ## Links
 
 - [Voyager中文文档](http://doc.laravel-voyager.cn/)
-- [国内插件源](http://satisfy.xiaoqiezi.top)
-- [国内插件源使用方法](http://doc.laravel-voyager.cn/getting-started/installation.html#%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E8%AF%AD%E8%A8%80%E5%8C%85)
+
+## Star
+
+If this packages helped you, leave a star for the author.
+
+
