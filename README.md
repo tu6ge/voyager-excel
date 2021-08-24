@@ -66,3 +66,8 @@ MIT
 ## Star
 
 If this packages helped you, leave a star for the author.
+
+## Contributing
+
+[Contributing Guide](https://github.com/tu6ge/voyager-excel/blob/master/CONTRIBUTING.md)
+
