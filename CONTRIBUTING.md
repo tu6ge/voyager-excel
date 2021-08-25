@@ -59,3 +59,7 @@ run `php artisan serve` , you can quick preview it in voyager.
 
 ## Implement your ideas
 
+## Run Test Case
+
+run `composer test` command.
+

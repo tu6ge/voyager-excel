@@ -52,10 +52,11 @@ class Example extends Model
 - zh_CN
 - en 
 
+## Test
+
+run `composer test` command.
+
 ## License
-
-MIT
-
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftu6ge%2Fvoyager-excel.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftu6ge%2Fvoyager-excel?ref=badge_large)
 
