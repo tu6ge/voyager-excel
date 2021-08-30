@@ -4,7 +4,7 @@ namespace Tu6ge\VoyagerExcel\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class BaseExport implements FromCollection
+class BaseExport extends AbstractExport implements FromCollection
 {
     protected $dataType;
     protected $model;

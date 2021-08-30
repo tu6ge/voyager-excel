@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Facades\Excel;
 use TCG\Voyager\Actions\AbstractAction;
+use Tu6ge\VoyagerExcel\Exports\AbstractExport;
 use Tu6ge\VoyagerExcel\Exports\BaseExport;
 
 class Export extends AbstractAction
@@ -62,8 +63,18 @@ class Export extends AbstractAction
             return $this->redirect();
         }
 
+        $export = new BaseExport($this->dataType, $ids);
+
+        if (isset($model->export_handler) && class_exists($model->export_handler)) {
+            $export = new $model->export_handler($this->dataType, $ids);
+            
+            if (!($export instanceof AbstractExport)) {
+                throw new \Exception(sprintf('the %s model export_handler is not instanceof Tu6ge\VoyagerExcel\Exports\AbstractExport', get_class($model)));
+            }
+        }
+
         return Excel::download(
-            new BaseExport($this->dataType, $ids),
+            $export,
             $this->getFileName()
         );
     }
