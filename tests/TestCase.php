@@ -30,6 +30,15 @@ class TestCase extends OrchestraTestCase
             );
         }
 
+        // Orchestra Testbench does not contain this file and can't create autoload without
+        if (!is_dir(base_path('tests/'))) {
+            mkdir(base_path('tests/'));
+            file_put_contents(
+                base_path('tests/TestCase.php'),
+                "<?php\n\n"
+            );
+        }
+
         $this->app->make('Illuminate\Contracts\Http\Kernel')->pushMiddleware('Illuminate\Session\Middleware\StartSession');
         $this->app->make('Illuminate\Contracts\Http\Kernel')->pushMiddleware('Illuminate\View\Middleware\ShareErrorsFromSession');
 
@@ -47,9 +56,10 @@ class TestCase extends OrchestraTestCase
 
     public function tearDown(): void
     {
-        //parent::tearDown();
+        // parent::tearDown();
 
-        //$this->artisan('migrate:reset');
+        unlink(base_path('tests/TestCase.php'));
+        rmdir(base_path('tests/'));
     }
 
     /**
