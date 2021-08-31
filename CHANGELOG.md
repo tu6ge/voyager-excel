@@ -1,3 +1,11 @@
+# [](https://github.com/tu6ge/voyager-excel/compare/v2.1.0...v) (2021-08-31)
+
+
+### Features
+
+* Support Custom Export Format ([bbbd727](https://github.com/tu6ge/voyager-excel/commit/bbbd727bc6cd45a7440b52fe614ed9db2a4947dc))
+
+
 # [](https://github.com/tu6ge/voyager-excel/compare/v2.0.0-beta1...v) (2021-08-06)
 
 
