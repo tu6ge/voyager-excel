@@ -74,14 +74,20 @@ use Tu6ge\VoyagerExcel\Exports\AbstractExport;
 
 class MyCustomExport extends AbstractExport
 {
+    protected $dataType;
+    protected $model;
+
     public function __construct($dataType, array $ids)
     {
+        $this->dataType = $dataType;
+        $this->model = new $dataType->model_name();
+
         // write your own idea
     }
 }
 ```
 
-[`Export` class more usage](https://docs.laravel-excel.com/3.1/exports/collection.html)
+`Export` class more usage, see [documents](https://docs.laravel-excel.com/3.1/exports/collection.html)
 
 2. Associate the export with your model:
 
@@ -97,6 +103,8 @@ class User extends Model
     public $export_handler = \YourApp\MyCustomExport::class;
 }
 ```
+
+now, you export this Model data , the excel format is your custom.
 
 ##  <a name='SupportLanguage'></a>Support Language
 
