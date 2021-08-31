@@ -6,9 +6,11 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use Maatwebsite\Excel\Facades\Excel;
+use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Models\Category;
 use TCG\Voyager\Models\DataType;
 use TCG\Voyager\Models\Permission;
+use Tu6ge\VoyagerExcel\Actions\Export;
 
 class CustomExportTest extends TestCase
 {
@@ -35,7 +37,7 @@ class CustomExportTest extends TestCase
         ]));
     }
 
-    public function testExportPartRecord()
+    public function testCustomExport()
     {
         $this->initCategory();
 
@@ -62,6 +64,20 @@ class CustomExportTest extends TestCase
         });
     }
 
+    public function testCustomExportThrow()
+    {
+        $this->createBreadForFormfieldThrow('text', 'text_area', json_encode([
+            'default' => 'Default Text',
+        ]));
+
+        $dataType = Voyager::model('DataType')->where('name', 'categories')->first();
+        $action = new Export($dataType, null);
+
+        $this->expectExceptionMessage('the Tu6ge\VoyagerExcel\Tests\Models\CustomExportThrow model export_handler is not instanceof Tu6ge\VoyagerExcel\Exports\AbstractExport');
+
+        $action->massAction([1], null);
+    }
+
     private function createBreadForFormfield($type, $name, $options = '')
     {
         Schema::dropIfExists('categories');
@@ -79,6 +95,38 @@ class CustomExportTest extends TestCase
         ->select($name, 'field_input_type_'.$name)
         ->type($options, 'field_details_'.$name)
         ->type('Tu6ge\\VoyagerExcel\\Tests\\Models\\CustomExport', 'model_name')
+        ->press(__('voyager::generic.submit'))
+        ->seeRouteIs('voyager.bread.index');
+
+        // Attach permissions to role
+        Auth::user()->role->permissions()->syncWithoutDetaching(Permission::all()->pluck('id'));
+
+        Category::insert([
+            'text_area' => 'bar',
+        ]);
+
+        Category::insert([
+            'text_area' => 'foo',
+        ]);
+    }
+
+    private function createBreadForFormfieldThrow($type, $name, $options = '')
+    {
+        Schema::dropIfExists('categories');
+        Schema::create('categories', function ($table) use ($type, $name) {
+            $table->bigIncrements('id');
+            $table->{$type}($name)->nullable();
+            $table->timestamps();
+        });
+
+        // Delete old BREAD
+        $this->delete(route('voyager.bread.delete', ['id' => DataType::where('name', 'categories')->first()->id]));
+
+        // Create BREAD
+        $this->visitRoute('voyager.bread.create', ['table' => 'categories'])
+        ->select($name, 'field_input_type_'.$name)
+        ->type($options, 'field_details_'.$name)
+        ->type('Tu6ge\\VoyagerExcel\\Tests\\Models\\CustomExportThrow', 'model_name')
         ->press(__('voyager::generic.submit'))
         ->seeRouteIs('voyager.bread.index');
 
