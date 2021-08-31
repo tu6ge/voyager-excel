@@ -15,7 +15,7 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftu6ge%2Fvoyager-excel.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftu6ge%2Fvoyager-excel?ref=badge_shield)
 [![](https://img.shields.io/github/issues-closed/tu6ge/voyager-excel)](https://github.com/tu6ge/voyager-excel)
 [![](http://github-actions.40ants.com/tu6ge/voyager-excel/matrix.svg)](https://github.com/tu6ge/voyager-excel)
-
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 a plugin of [voyager](https://github.com/the-control-group/voyager) for excel export
 
