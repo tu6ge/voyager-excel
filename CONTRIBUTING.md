@@ -51,7 +51,7 @@ write the content:
     ...
 ```
 
-and run `composer dump` command. this is finished.
+and run `composer update` command. this is finished.
 
 ## Run
 
