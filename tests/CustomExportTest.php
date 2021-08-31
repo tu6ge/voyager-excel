@@ -62,7 +62,6 @@ class CustomExportTest extends TestCase
         });
     }
 
-
     private function createBreadForFormfield($type, $name, $options = '')
     {
         Schema::dropIfExists('categories');

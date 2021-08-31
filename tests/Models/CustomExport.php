@@ -17,8 +17,8 @@ class CustomExport extends Model
 
 class MyExport extends AbstractExport implements FromCollection
 {
-    public function __construct($dataType, array $ids){
-
+    public function __construct($dataType, array $ids)
+    {
     }
 
     public function collection()

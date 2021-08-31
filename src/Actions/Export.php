@@ -67,7 +67,7 @@ class Export extends AbstractAction
 
         if (isset($model->export_handler) && class_exists($model->export_handler)) {
             $export = new $model->export_handler($this->dataType, $ids);
-            
+
             if (!($export instanceof AbstractExport)) {
                 throw new \Exception(sprintf('the %s model export_handler is not instanceof Tu6ge\VoyagerExcel\Exports\AbstractExport', get_class($model)));
             }
