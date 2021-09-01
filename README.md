@@ -80,14 +80,15 @@ class MyCustomExport extends AbstractExport
     public function __construct($dataType, array $ids)
     {
         $this->dataType = $dataType;
-        $this->model = new $dataType->model_name();
+        $this->model = new $dataType->model_name(); // this is current Model instance
+        // $ids is user selected record ids 
 
         // write your own idea
     }
 }
 ```
 
-`Export` class more usage, see [documents](https://docs.laravel-excel.com/3.1/exports/collection.html)
+`Export` class more usage, see [laravel excel documents](https://docs.laravel-excel.com/3.1/exports/collection.html)
 
 2. Associate the export with your model:
 
