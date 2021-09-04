@@ -11,6 +11,7 @@
 [![Tests](https://github.com/tu6ge/voyager-excel/workflows/Tests/badge.svg?branch=master)](https://github.com/tu6ge/voyager-excel/actions)
 [![Coverage Status](https://coveralls.io/repos/github/tu6ge/voyager-excel/badge.svg?branch=master)](https://coveralls.io/github/tu6ge/voyager-excel?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/tu6ge/voyager-excel/v)](//packagist.org/packages/tu6ge/voyager-excel)
+![Packagist Downloads](https://img.shields.io/packagist/dm/tu6ge/voyager-excel)
 [![styleci](https://github.styleci.io/repos/239457151/shield?branch=master)](https://github.com/tu6ge/voyager-excel)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftu6ge%2Fvoyager-excel.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftu6ge%2Fvoyager-excel?ref=badge_shield)
 [![](https://img.shields.io/github/issues-closed/tu6ge/voyager-excel)](https://github.com/tu6ge/voyager-excel)
