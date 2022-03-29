@@ -12,14 +12,14 @@ use Tu6ge\VoyagerExcel\Tests\Models\CategoryAllow;
 
 class AllowTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
         Auth::loginUsingId(1);
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         parent::tearDown();
     }

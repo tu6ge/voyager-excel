@@ -12,7 +12,7 @@ use TCG\Voyager\Models\Permission;
 
 class GeneralTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         // $this->markTestSkipped(
         //     '临时跳过 General'
@@ -22,7 +22,7 @@ class GeneralTest extends TestCase
         Auth::loginUsingId(1);
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         parent::tearDown();
 
