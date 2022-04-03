@@ -13,7 +13,7 @@ class TestCase extends OrchestraTestCase
 {
     protected $withDummy = true;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -54,7 +54,7 @@ class TestCase extends OrchestraTestCase
         ];
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         // parent::tearDown();
 
