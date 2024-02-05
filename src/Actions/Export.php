@@ -1,24 +1,24 @@
 <?php
 
-namespace Tu6ge\VoyagerExcel\Actions;
+namespace themachinarium\MacherExcel\Actions;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Facades\Excel;
-use TCG\Voyager\Actions\AbstractAction;
-use Tu6ge\VoyagerExcel\Exports\AbstractExport;
-use Tu6ge\VoyagerExcel\Exports\BaseExport;
+use MCH\Macher\Actions\AbstractAction;
+use themachinarium\MacherExcel\Exports\AbstractExport;
+use themachinarium\MacherExcel\Exports\BaseExport;
 
 class Export extends AbstractAction
 {
     public function getTitle()
     {
-        return __('voyager_excel::excel.export_excel');
+        return __('macher_excel::excel.export_excel');
     }
 
     public function getIcon()
     {
-        return 'voyager-download';
+        return 'macher-download';
     }
 
     public function shouldActionDisplayOnDataType()
@@ -69,7 +69,7 @@ class Export extends AbstractAction
             $export = new $model->export_handler($this->dataType, $ids);
 
             if (!($export instanceof AbstractExport)) {
-                throw new \Exception(sprintf('the %s model export_handler is not instanceof Tu6ge\VoyagerExcel\Exports\AbstractExport', get_class($model)));
+                throw new \Exception(sprintf('the %s model export_handler is not instanceof themachinarium\MacherExcel\Exports\AbstractExport', get_class($model)));
             }
         }
 

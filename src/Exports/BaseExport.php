@@ -1,6 +1,6 @@
 <?php
 
-namespace Tu6ge\VoyagerExcel\Exports;
+namespace themachinarium\MacherExcel\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
 

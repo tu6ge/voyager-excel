@@ -1,11 +1,11 @@
 {
-    "name": "tu6ge/voyager-excel",
-    "description": "voyager excel export hook",
+    "name": "themachinarium/macher-excel",
+    "description": "macher excel export hook",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "tu6ge",
+            "name": "macher",
             "email": "772364230@qq.com"
         }
     ],
@@ -20,18 +20,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Tu6ge\\VoyagerExcel\\": "src/"
+            "themachinarium\\MacherExcel\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tu6ge\\VoyagerExcel\\Tests\\": "tests/"
+            "themachinarium\\MacherExcel\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Tu6ge\\VoyagerExcel\\VoyagerExcelServiceProvider"
+                "themachinarium\\MacherExcel\\VoyagerExcelServiceProvider"
             ]
         }
     },
